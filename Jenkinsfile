@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "🚀 Deploying index.html to Nginx web root..."
                 // index.html ko nginx ke live path par copy kar rahe hain
-                sh 'sudo cp index.html /var/www/html/index.html'
+                sh 'cp index.html /var/www/html/index.html'
             }
         }
     }
