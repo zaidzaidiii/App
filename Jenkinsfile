@@ -4,15 +4,14 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                echo "📥 Fetching code from GitHub..."
+                echo "📥 Fetching latest code from GitHub..."
             }
         }
-        stage('Verify Files') {
+        stage('Deploy Live to Nginx') {
             steps {
-                echo "🔍 Checking repo contents on remote server..."
-                // Check if index.html exists in workspace
-                sh 'ls -la'
-                sh 'test -f index.html && echo "HTML file found!"'
+                echo "🚀 Deploying index.html to Nginx web root..."
+                # index.html ko nginx ke live path par copy kar rahe hain
+                sh 'sudo cp index.html /var/www/html/index.html'
             }
         }
     }
