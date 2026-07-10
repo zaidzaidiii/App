@@ -63,7 +63,7 @@
 
         /* Main Content Container */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             padding: 30px 20px;
             text-align: center;
         }
@@ -71,8 +71,8 @@
         /* Cat Image Grid */
         .cat-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
@@ -81,16 +81,17 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .cat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(255, 123, 144, 0.15);
         }
 
         .cat-card img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
             display: block;
         }
@@ -102,6 +103,13 @@
         .cat-info h3 {
             margin: 0 0 5px 0;
             color: #ff7b90;
+            font-size: 1.3rem;
+        }
+
+        .cat-info p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
 
         /* Fun Fact Box */
@@ -137,32 +145,66 @@
     </header>
 
     <div class="container">
+        <!-- Expanded Cat Photo Gallery -->
         <div class="cat-grid">
+            
+            <!-- Cat 1 -->
             <div class="cat-card">
                 <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500&auto=format&fit=crop" alt="Cute sleeping cat">
                 <div class="cat-info">
                     <h3>Mochi</h3>
-                    <p>Professional Box Inspector & Nap Enthusiast.</p>
+                    <p>Professional Box Inspector & Part-Time Nap Enthusiast.</p>
                 </div>
             </div>
 
+            <!-- Cat 2 -->
             <div class="cat-card">
                 <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=500&auto=format&fit=crop" alt="Cat with sunglasses">
                 <div class="cat-info">
                     <h3>Milo</h3>
-                    <p>Too cool for rules. Likes treats, hates the vacuum.</p>
+                    <p>Too cool for rules. Likes expensive treats, hates the vacuum cleaner.</p>
                 </div>
             </div>
 
+            <!-- Cat 3 -->
             <div class="cat-card">
                 <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=500&auto=format&fit=crop" alt="Ginger cat looking curious">
                 <div class="cat-info">
                     <h3>Ginger</h3>
-                    <p>Will stare at a blank wall for hours. Absolute chaotic energy.</p>
+                    <p>Will stare at a blank wall for hours. Pure chaotic energy.</p>
                 </div>
             </div>
+
+            <!-- Cat 4 -->
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&auto=format&fit=crop" alt="Fluffy kitten face close up">
+                <div class="cat-info">
+                    <h3>Luna</h3>
+                    <p>Master of the "Puss in Boots" sad eyes. Works every single time.</p>
+                </div>
+            </div>
+
+            <!-- Cat 5 -->
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=500&auto=format&fit=crop" alt="Cute calico cat playing">
+                <div class="cat-info">
+                    <h3>Bean</h3>
+                    <p>Enjoys zooming across the living room at exactly 3:00 AM.</p>
+                </div>
+            </div>
+
+            <!-- Cat 6 -->
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=500&auto=format&fit=crop" alt="Tabby cat stretching">
+                <div class="cat-info">
+                    <h3>Oliver</h3>
+                    <p>A distinguished gentleman who demands chin scratches immediately.</p>
+                </div>
+            </div>
+
         </div>
 
+        <!-- Dynamic Cat Fact Generator -->
         <div class="fact-box">
             <h4>💡 Random Cat Fact</h4>
             <p id="cat-fact">Cats sleep for 70% of their lives. Honestly, relatable.</p>
@@ -175,7 +217,6 @@
     </footer>
 
     <script>
-        // Array of cute cat facts
         const facts = [
             "Cats sleep for 70% of their lives. Honestly, relatable.",
             "A group of cats is called a 'clowder'.",
@@ -192,7 +233,6 @@
             document.getElementById('cat-fact').innerText = facts[factIndex];
         }
 
-        // Synthesizes a cute electronic "meow" sound completely via code
         function playMeow() {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (!AudioContext) return;
@@ -203,12 +243,10 @@
             
             osc.type = 'triangle';
             
-            // Frequency sweep to mimic a "me-ow" pitch shift
             osc.frequency.setValueAtTime(400, ctx.currentTime); 
             osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.1);
             osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.3);
             
-            // Volume envelope
             gain.gain.setValueAtTime(0, ctx.currentTime);
             gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 0.05);
             gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
